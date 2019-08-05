@@ -1,21 +1,50 @@
 import { Grid } from "@material-ui/core";
 import React from "react";
-import { SearchBar, VideoDetail } from "./components";
-
+import youtube from "./api/youtube";
+import { SearchBar, VideoDetail, VideoList } from "./components";
 class App extends React.Component {
+  state = {
+    videos: [],
+    selectedVideo: null
+  };
+
+  componentDidMount() {
+    this.handleSubmit("freeCodeCamp");
+  }
+
+  onVideoSelect = video => {
+    this.setState({ selectedVideo: video });
+  };
+
+  handleSubmit = async searchTerm => {
+    const response = await youtube.get("search", {
+      params: {
+        part: "snippet",
+        maxResults: 5,
+        key: "AIzaSyA3_o79QOsYgno6y5YG4C2Ih7NUHqP4FF0",
+        q: searchTerm
+      }
+    });
+
+    this.setState({
+      videos: response.data.items,
+      selectedVideo: response.data.items[0]
+    });
+  };
   render() {
+    const { selectedVideo, videos } = this.state;
     return (
-      <Grid justify="center" container spacing={16}>
+      <Grid justify="center" container spacing={10}>
         <Grid item xs={12}>
-          <Grid container spacing={16}>
+          <Grid container spacing={10}>
             <Grid item xs={12}>
               <SearchBar onFormSubmit={this.handleSubmit} />
             </Grid>
             <Grid item xs={8}>
-              <VideoDetail />
+              <VideoDetail video={selectedVideo} />
             </Grid>
             <Grid item xs={4}>
-              {/* Video List */}
+              <VideoList videos={videos} onVideoSelect={this.onVideoSelect} />
             </Grid>
           </Grid>
         </Grid>

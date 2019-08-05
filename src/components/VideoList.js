@@ -1,11 +1,16 @@
-import React, { Component } from 'react'
+import { Grid } from '@material-ui/core';
+import React from "react";
+import VideoItem from "./VideoItem";
 
-export default class VideoList extends Component {
-  render() {
-    return (
-      <div>
+const VideoList = ({ videos, onVideoSelect }) => {
+  const listOfVideos = videos.map((video, id) =>
+    <VideoItem key={id} onVideoSelect={onVideoSelect} video={video} />)
 
-      </div>
-    )
-  }
-}
+  return (
+    <Grid container spacing={10}>
+      {listOfVideos}
+    </Grid>
+  )
+};
+
+export default VideoList;
