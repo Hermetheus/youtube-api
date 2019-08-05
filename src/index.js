@@ -1,6 +1,5 @@
-import React from 'react';
-import ReactDom from 'react-dom';
-import App from './App';
+import React from "react";
+import ReactDom from "react-dom";
+import Router from "./components/Router";
 
-
-ReactDom.render(<App />, document.querySelector('#root'));
+ReactDom.render(<Router />, document.querySelector("#root"));
