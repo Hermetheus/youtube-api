@@ -1,7 +1,7 @@
 {
   "name": "youtube-clone",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "homepage": "https://youtubeclone-api.netlify.com",
   "dependencies": {
     "@material-ui/core": "^4.3.1",
