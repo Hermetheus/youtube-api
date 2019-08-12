@@ -1,7 +1,13 @@
 import { Grid } from "@material-ui/core";
 import React from "react";
 import youtube from "./api/youtube";
-import { SearchBar, VideoDetail, VideoList } from "./components";
+import {
+  SearchBar,
+  SearchBar1,
+  VideoDetail,
+  VideoDetail1,
+  VideoList
+} from "./components";
 class App extends React.Component {
   state = {
     videos: [],
@@ -50,6 +56,24 @@ class App extends React.Component {
               style={{ height: "1000px" }}
             >
               <VideoDetail video={selectedVideo} />
+            </Grid>
+            <Grid item xs={12} lg={4} style={{ height: "250px" }}>
+              <VideoList videos={videos} onVideoSelect={this.onVideoSelect} />
+            </Grid>
+          </Grid>
+          <Grid container spacing={10}>
+            <Grid item xs={12}>
+              <SearchBar1 onFormSubmit={this.handleSubmit} />
+            </Grid>
+            <Grid
+              item
+              lg={8}
+              m={12}
+              xs={12}
+              spacing={4}
+              style={{ height: "1000px" }}
+            >
+              <VideoDetail1 video={selectedVideo} />
             </Grid>
             <Grid item xs={12} lg={4} style={{ height: "250px" }}>
               <VideoList videos={videos} onVideoSelect={this.onVideoSelect} />
