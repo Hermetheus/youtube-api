@@ -8,6 +8,9 @@ import {
   VideoDetail1,
   VideoList
 } from "./components";
+
+const REACT_APP_API_KEY = `${process.env.REACT_APP_API_KEY}`;
+console.log(`${process.env.REACT_APP_API_KEY}`);
 class App extends React.Component {
   state = {
     videos: [],
@@ -27,7 +30,7 @@ class App extends React.Component {
       params: {
         part: "snippet",
         maxResults: 5,
-        key: "AIzaSyA3_o79QOsYgno6y5YG4C2Ih7NUHqP4FF0",
+        key: `${REACT_APP_API_KEY}`,
         q: searchTerm
       }
     });
@@ -47,14 +50,7 @@ class App extends React.Component {
               <SearchBar onFormSubmit={this.handleSubmit} />
             </Grid>
 
-            <Grid
-              item
-              lg={8}
-              m={12}
-              xs={12}
-              spacing={4}
-              style={{ height: "1000px" }}
-            >
+            <Grid item lg={8} m={12} xs={12} style={{ height: "1000px" }}>
               <VideoDetail video={selectedVideo} />
             </Grid>
             <Grid item xs={12} lg={4} style={{ height: "250px" }}>
@@ -65,14 +61,7 @@ class App extends React.Component {
             <Grid item xs={12}>
               <SearchBar1 onFormSubmit={this.handleSubmit} />
             </Grid>
-            <Grid
-              item
-              lg={8}
-              m={12}
-              xs={12}
-              spacing={4}
-              style={{ height: "1000px" }}
-            >
+            <Grid item lg={8} m={12} xs={12} style={{ height: "1000px" }}>
               <VideoDetail1 video={selectedVideo} />
             </Grid>
             <Grid item xs={12} lg={4} style={{ height: "250px" }}>
